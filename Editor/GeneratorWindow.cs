@@ -35,6 +35,18 @@ namespace DoxygenGenerator
             set => GeneratorSettings.outputDirectory = value;
         }
 
+        private string readme
+        {
+            get => GeneratorSettings.readme;
+            set => GeneratorSettings.readme = value;
+        }
+
+        private bool graph
+        {
+            get => GeneratorSettings.graph;
+            set => GeneratorSettings.graph = value;
+        }
+
         private string project
         {
             get => GeneratorSettings.project;
@@ -152,9 +164,18 @@ namespace DoxygenGenerator
             EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
 
             GUILayout.Label("Project Settings", EditorStyles.boldLabel);
+            EditorGUILayout.BeginHorizontal();
+            readme = EditorGUILayout.DelayedTextField("README.md", readme);
+            if (GUILayout.Button("...", EditorStyles.miniButtonRight, GUILayout.Width(22)))
+            {
+                readme = EditorUtility.OpenFilePanel("Select your README.md", string.Empty, "md");
+            }
+            EditorGUILayout.EndHorizontal();
             project = EditorGUILayout.TextField("Name", project);
             synopsis = EditorGUILayout.TextField("Synopsis", synopsis);
             version = EditorGUILayout.TextField("Version", version);
+            GUILayout.Label("Graphviz Required", EditorStyles.boldLabel);
+            graph = EditorGUILayout.Toggle("Build Graphs", graph);
         }
 
         private void DocumentationGUI()

@@ -39,5 +39,17 @@ namespace DoxygenGenerator
             get => EditorPrefs.GetString($"{nameof(DoxygenGenerator)}.{nameof(GeneratorSettings)}.{nameof(version)}", string.Empty);
             set => EditorPrefs.SetString($"{nameof(DoxygenGenerator)}.{nameof(GeneratorSettings)}.{nameof(version)}", value);
         }
+
+        public static string readme
+        {
+            get => EditorPrefs.GetString($"{nameof(DoxygenGenerator)}.{nameof(GeneratorSettings)}.{nameof(readme)}", string.Empty);
+            set => EditorPrefs.SetString($"{nameof(DoxygenGenerator)}.{nameof(GeneratorSettings)}.{nameof(readme)}", value);
+        }
+
+        public static bool graph
+        {
+            get => EditorPrefs.GetBool($"{nameof(DoxygenGenerator)}.{nameof(GeneratorSettings)}.{nameof(graph)}", false);
+            set => EditorPrefs.SetBool($"{nameof(DoxygenGenerator)}.{nameof(GeneratorSettings)}.{nameof(graph)}", value);
+        }
     }
 }
